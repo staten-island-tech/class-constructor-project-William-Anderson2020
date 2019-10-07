@@ -1,0 +1,14 @@
+:root{
+    /* Color Variables */
+    --cp-primary:;
+    --cp-secondary:;
+    --cp-tertiary:;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+*, *::after, *::before{
+    box-sizing: border-box;
+}
