@@ -12,3 +12,28 @@ html{
 *, *::after, *::before{
     box-sizing: border-box;
 }
+
+.flex_column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.player_inputs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player_inputs_ready{
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_form{
+    height: 20vh;
+    justify-content: space-around;
+}

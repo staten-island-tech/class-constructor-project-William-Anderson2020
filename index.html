@@ -8,34 +8,50 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class="header">
-            <div class="header_text"></div>
-        </div>
-        <div class="player_inputs">
-            <div class="player_inputs_one">
-                <form action="" class="user_one_inputs">
-                    <input type="text" name="Input Name Here">
-
-                </form>
+        <div class="container">
+            <div class="header">
+                <div class="header_text"></div>
             </div>
-            <div class="player_inputs_ready">
+            <div class="player_inputs">
+                <div class="player_inputs_one">
+                    <form action="" class="user_one_inputs flex_column user_form">
+                        <input type="text" name="Input Name Here">
+                        <select id="player_one_game" name="Game">
+                            <option value="Awakening">Awakening</option>
+                            <option value="Fates">Fates</option>
+                            <option value="Three Houses">Three Houses</option>
+                        </select>
+                        <div class="placeholder"></div>
+                    </form>
+                </div>
+                <div class="player_inputs_ready">
+                    <input type="radio" name="player_count" class="player_inputs_ready_form">One Player<br>
+                    <input type="radio" name="player_count" class="player_inputs_ready_form">Two Players<br>
+                </div>
+                <div class="player_inputs_two flex_column">
+                    <form action="" class="user_two_inputs flex_column user_form">
+                        <input type="text" name="Input Name Here">
+                        <select id="player_two_game" name="Game">
+                            <option value="Awakening">Awakening</option>
+                            <option value="Fates">Fates</option>
+                            <option value="Three Houses">Three Houses</option>
+                        </select>
+                        <div class="placeholder"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="game_results">
+                <div class="game_results_one">
+
+                </div>
+                <div class="game_results_middle">
+
+                </div>
+                <div class="game_results_two">
+
+                </div>
 
             </div>
-            <div class="player_inputs_two">
-
-            </div>
-        </div>
-        <div class="game_results">
-            <div class="game_results_one">
-
-            </div>
-            <div class="game_results_middle">
-
-            </div>
-            <div class="game_results_two">
-
-            </div>
-
         </div>
 
 
