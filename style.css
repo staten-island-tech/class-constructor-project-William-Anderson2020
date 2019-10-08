@@ -1,8 +1,8 @@
 :root{
     /* Color Variables */
-    --cp-primary:;
-    --cp-secondary:;
-    --cp-tertiary:;
+    --cp-primary:#fff;
+    --cp-secondary:#fff;
+    --cp-tertiary:#fff;
 }
 
 html{

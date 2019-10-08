@@ -11,13 +11,14 @@
 
     //Character Class
     class Character{
-        constructor(name, weapon, game, hp, atk, portrait){
+        constructor(name, weapon, game, hp, atk, portrait, fullImage){
             this.name = name;
             this.weapon = weapon;
             this.game = game;
             this.hp = hp;
             this.atk = atk;
             this.portrait = portrait;
+            this.fullImage = fullImage;
         }
     }
 
@@ -25,8 +26,8 @@
 
 
 function displayCharacterChoices(e){
-    let playerInput = document.querySelector('#player_one_game');
-    if 
+    let playerInput = document.querySelector('player')
+    
 }
 
 class UI{
@@ -40,6 +41,12 @@ class UI{
 
 // Controller
     // Event Handler
+
+    // Instanciate Characters
+    const lucina = new Character('Lucina', 'Sword', 'Awakening', 27, 9, 'img/portrait/lucina.png', 'img/fullImage/lucina.png');
+    const frederick = new Character('Frederick', 'Spear', 'Awakening', 28, 13, 'img/portrait/frederick.png', 'img/fullImage/frederick.png');
+    const basilio = new Character('Basilio', 'Axe', 'Awakening', 56, 30, 'img/portrait/basilio.png', 'img/fullImage/basilio.png')
+    const awakeningCharacters = [lucina, frederick, basilio];
 
     // Take user inputs
         //Names
