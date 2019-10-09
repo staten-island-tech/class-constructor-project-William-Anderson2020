@@ -24,6 +24,7 @@ html{
     display: flex;
     align-items: center;
     justify-content: center;
+    /* width: 30%; */
 }
 
 .player_inputs_ready{
@@ -34,6 +35,30 @@ html{
 }
 
 .user_form{
-    height: 20vh;
+    /*height: 20vh;*/
     justify-content: space-around;
+    width: 30vw;
+}
+
+.character_portrait{
+    width: 9vw;
+    height: 9vw;
+    overflow: hidden;
+    object-fit: cover;
+    margin: .5vw;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    object-position: 50% .25rem; 
+}
+
+/* .character_portrait:hover{
+    transform: scale(1.1);
+    transition: .5s;
+} */
+
+.player_inputs_characters{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
