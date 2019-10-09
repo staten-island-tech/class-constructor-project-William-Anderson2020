@@ -62,8 +62,8 @@ class UI{
         //Names
         //1p 2p
         //Game
-        function gameSelect(e){
-            let characterArray = document.querySelector('.player_game').textContent;
+        function gameSelect(characterArray){
+            //let characterArray = document.querySelector('.player_game').textContent;
             
             let html = '<div class="inputs_character_portrait"><img class="character_portrait" id="swordPortrait" src="%sword%"></div> <div class="inputs_character_portrait"><img class="character_portrait" id="spearPortrait" src="%spear%"></div> <div class="inputs_character_portrait"><img class="character_portrait" id="axePortrait" src="%axe%"></div>';
             let newhtml = html.replace('%sword%', characterArray[0].portrait);

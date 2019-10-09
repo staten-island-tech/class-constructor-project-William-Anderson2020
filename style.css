@@ -52,10 +52,10 @@ html{
     object-position: 50% .25rem; 
 }
 
-/* .character_portrait:hover{
+.character_portrait:hover{
     transform: scale(1.1);
     transition: .5s;
-} */
+}
 
 .player_inputs_characters{
     display: flex;
