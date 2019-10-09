@@ -41,6 +41,12 @@ class UI{
 
 // Controller
     // Event Handler
+    function eventListeners(){
+        let portraits = document.querySelectorAll('.character_portraits');
+        portraits = Array.from(portraits)
+        
+        document.getElementById('Lucina').addEventListener('click', characterSelect);
+    }
 
     //document.querySelector('.player_inputs_characters').addEventListener('change', gameSelect(document.querySelector('.player_inputs_characters').textContent))
 
@@ -82,12 +88,16 @@ class UI{
                     characterArray = null;
             }
 
-            let html = '<div class="inputs_character_portrait"><img class="character_portrait" id="swordPortrait" src="%sword%"></div> <div class="inputs_character_portrait"><img class="character_portrait" id="spearPortrait" src="%spear%"></div> <div class="inputs_character_portrait"><img class="character_portrait" id="axePortrait" src="%axe%"></div>';
+            let html = '<div class="inputs_character_portrait"><img class="character_portrait swordPortrait %swordName%" src="%sword%"></div> <div class="inputs_character_portrait"><img class="character_portrait spearPortrait %spearName%" src="%spear%"></div> <div class="inputs_character_portrait"><img class="character_portrait axePortrait %axeName%" src="%axe%"></div>';
             let newhtml = html.replace('%sword%', characterArray[0].portrait);
+            newhtml = newhtml.replace('%swordName%', characterArray[0].name);
             newhtml = newhtml.replace('%spear%', characterArray[1].portrait);
+            newhtml = newhtml.replace('%spearName%', characterArray[1].name);
             newhtml = newhtml.replace('%axe%', characterArray[2].portrait);
+            newhtml = newhtml.replace('%axeName%', characterArray[2].name);
 
             document.getElementById('player_one_portraits').innerHTML = newhtml;
+
         }    
 
         function gameSelectTwo(characterArray){
@@ -108,15 +118,33 @@ class UI{
                     characterArray = null;
             }
 
-            let html = '<div class="inputs_character_portrait"><img class="character_portrait" id="swordPortrait" src="%sword%"></div> <div class="inputs_character_portrait"><img class="character_portrait" id="spearPortrait" src="%spear%"></div> <div class="inputs_character_portrait"><img class="character_portrait" id="axePortrait" src="%axe%"></div>';
+            let html = '<div class="inputs_character_portrait"><img class="character_portrait swordPortrait %swordName%" src="%sword%"></div> <div class="inputs_character_portrait"><img class="character_portrait spearPortrait %spearName%" src="%spear%"></div> <div class="inputs_character_portrait"><img class="character_portrait axePortrait %axeName%" src="%axe%"></div>';
             let newhtml = html.replace('%sword%', characterArray[0].portrait);
+            newhtml = newhtml.replace('%swordName%', characterArray[0].name);
             newhtml = newhtml.replace('%spear%', characterArray[1].portrait);
+            newhtml = newhtml.replace('%spearName%', characterArray[1].name);
             newhtml = newhtml.replace('%axe%', characterArray[2].portrait);
+            newhtml = newhtml.replace('%axeName%', characterArray[2].name);
 
             document.getElementById('player_two_portraits').innerHTML = newhtml;
+
+            function eventListeners(){
+                let portraits = document.querySelectorAll('.character_portraits');
+                portraits = Array.from(portraits)
+                
+                document.querySelector('.Lucina').addEventListener('click', characterSelect);
+            }
+
+            eventListeners();
+
         } 
 
         //Character
+
+        function characterSelect(e){
+            console.log('test');
+        }
+
 
     // Instanciate players
 
@@ -127,9 +155,9 @@ class UI{
     // Event listeners
 
     /* function eventListeners(){
-        let gameSelector = document.querySelectorAll('.player_game')
-
-        document.getElementById('player_game').addEventListener('mouseover', gameSelect(this.textContent));
-
-    }
-    eventListeners(); */
+        const portraits = document.getElementsByClassName('character_portraits');
+        Array.from(portraits).forEach(function(element) {
+            element.addEventListener('click', characterSelect());
+          });
+    } */
+    /* eventListeners(); */
