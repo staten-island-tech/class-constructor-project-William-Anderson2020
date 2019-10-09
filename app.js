@@ -42,6 +42,8 @@ class UI{
 // Controller
     // Event Handler
 
+    //document.querySelector('.player_inputs_characters').addEventListener('change', gameSelect(document.querySelector('.player_inputs_characters').textContent))
+
     // Instanciate Characters
     const lucina = new Character('Lucina', 'Sword', 'Awakening', 27, 9, 'img/portrait/lucina.png', 'img/fullImage/lucina.png');
     const frederick = new Character('Frederick', 'Spear', 'Awakening', 28, 13, 'img/portrait/frederick.png', 'img/fullImage/frederick.png');
@@ -63,15 +65,56 @@ class UI{
         //1p 2p
         //Game
         function gameSelect(characterArray){
-            //let characterArray = document.querySelector('.player_game').textContent;
-            
+
+            //console.log('query test');
+
+            switch(characterArray) {
+                case 'Awakening':
+                    characterArray = awakeningCharacters;
+                    break;
+                case 'Fates':
+                    characterArray = fatesCharacters;
+                    break;
+                case 'Three Houses':
+                    characterArray = threeHousesCharacters;
+                    break;
+                default:
+                    characterArray = null;
+            }
+
             let html = '<div class="inputs_character_portrait"><img class="character_portrait" id="swordPortrait" src="%sword%"></div> <div class="inputs_character_portrait"><img class="character_portrait" id="spearPortrait" src="%spear%"></div> <div class="inputs_character_portrait"><img class="character_portrait" id="axePortrait" src="%axe%"></div>';
             let newhtml = html.replace('%sword%', characterArray[0].portrait);
             newhtml = newhtml.replace('%spear%', characterArray[1].portrait);
             newhtml = newhtml.replace('%axe%', characterArray[2].portrait);
 
-            document.querySelector('.player_inputs_characters').innerHTML = newhtml;
+            document.getElementById('player_one_portraits').innerHTML = newhtml;
         }    
+
+        function gameSelectTwo(characterArray){
+
+            //console.log('query test');
+
+            switch(characterArray) {
+                case 'Awakening':
+                    characterArray = awakeningCharacters;
+                    break;
+                case 'Fates':
+                    characterArray = fatesCharacters;
+                    break;
+                case 'Three Houses':
+                    characterArray = threeHousesCharacters;
+                    break;
+                default:
+                    characterArray = null;
+            }
+
+            let html = '<div class="inputs_character_portrait"><img class="character_portrait" id="swordPortrait" src="%sword%"></div> <div class="inputs_character_portrait"><img class="character_portrait" id="spearPortrait" src="%spear%"></div> <div class="inputs_character_portrait"><img class="character_portrait" id="axePortrait" src="%axe%"></div>';
+            let newhtml = html.replace('%sword%', characterArray[0].portrait);
+            newhtml = newhtml.replace('%spear%', characterArray[1].portrait);
+            newhtml = newhtml.replace('%axe%', characterArray[2].portrait);
+
+            document.getElementById('player_two_portraits').innerHTML = newhtml;
+        } 
 
         //Character
 
@@ -80,3 +123,13 @@ class UI{
     // Calculate winner
 
     // Instanciate ui
+
+    // Event listeners
+
+    /* function eventListeners(){
+        let gameSelector = document.querySelectorAll('.player_game')
+
+        document.getElementById('player_game').addEventListener('mouseover', gameSelect(this.textContent));
+
+    }
+    eventListeners(); */
