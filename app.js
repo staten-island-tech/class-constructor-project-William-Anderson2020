@@ -26,7 +26,7 @@
 
 
 function displayCharacterChoices(e){
-    let playerInput = document.querySelector('player')
+    let playerInput = document.querySelector('player');
     
 }
 
@@ -41,11 +41,15 @@ class UI{
 
 // Controller
     // Event Handler
-    function eventListeners(){
-        let portraits = document.querySelectorAll('.character_portraits');
-        portraits = Array.from(portraits)
-        
-        document.getElementById('Lucina').addEventListener('click', characterSelect);
+
+    //let portraits = document.querySelectorAll('.character_portrait');
+    let portraits = Array.from(document.querySelectorAll('.character_portrait'));
+    portraits.forEach(el => el.addEventListener('click', characterSelect()));
+    console.log(portraits);
+    
+    // eventListeners();
+    function characterSelect(){
+        console.log('test');
     }
 
     //document.querySelector('.player_inputs_characters').addEventListener('change', gameSelect(document.querySelector('.player_inputs_characters').textContent))
@@ -65,6 +69,8 @@ class UI{
     const dimitri = new Character('Dimitri', 'Spear', 'Three Houses', 28, 12, 'img/portrait/dimitri.png', 'img/fullImage/dimitri.png');
     const edelgard = new Character('Edelgard', 'Axe', 'Three Houses', 29, 13, 'img/portrait/edelgard.png', 'img/fullImage/edelgard.png');
     const threeHousesCharacters = [byleth, dimitri, edelgard];
+
+    const fullRoster = [...awakeningCharacters, ...fatesCharacters, ...threeHousesCharacters];
 
     // Take user inputs
         //Names
@@ -141,9 +147,9 @@ class UI{
 
         //Character
 
-        function characterSelect(e){
+        /* function characterSelect(e){
             console.log('test');
-        }
+        } */
 
 
     // Instanciate players
