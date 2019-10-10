@@ -42,17 +42,7 @@ class UI{
 // Controller
     // Event Handler
 
-    //let portraits = document.querySelectorAll('.character_portrait');
-    let portraits = Array.from(document.querySelectorAll('.character_portrait'));
-    portraits.forEach(el => el.addEventListener('click', characterSelect()));
-    console.log(portraits);
     
-    // eventListeners();
-    function characterSelect(){
-        console.log('test');
-    }
-
-    //document.querySelector('.player_inputs_characters').addEventListener('change', gameSelect(document.querySelector('.player_inputs_characters').textContent))
 
     // Instanciate Characters
     const lucina = new Character('Lucina', 'Sword', 'Awakening', 27, 9, 'img/portrait/lucina.png', 'img/fullImage/lucina.png');
@@ -104,6 +94,24 @@ class UI{
 
             document.getElementById('player_one_portraits').innerHTML = newhtml;
 
+            function eventListeners(){
+                let portraits = document.querySelectorAll('.character_portrait');
+                portraits.forEach(function(el){
+                    el.addEventListener('click', characterSelect('click', el));
+                });
+                console.log(portraits);
+            }
+            
+            function characterSelect(event, el){
+                if (event.type == 'click'){
+                    console.log(el);
+                } else{
+                    console.log('fail');
+                }
+            }
+
+            eventListeners();
+
         }    
 
         function gameSelectTwo(characterArray){
@@ -124,7 +132,7 @@ class UI{
                     characterArray = null;
             }
 
-            let html = '<div class="inputs_character_portrait"><img class="character_portrait swordPortrait %swordName%" src="%sword%"></div> <div class="inputs_character_portrait"><img class="character_portrait spearPortrait %spearName%" src="%spear%"></div> <div class="inputs_character_portrait"><img class="character_portrait axePortrait %axeName%" src="%axe%"></div>';
+            let html = '<div class="inputs_character_portrait"><img class="character_portrait swordPortrait %swordName%" src="%sword%" onclick="characterSelect()"></div> <div class="inputs_character_portrait"><img class="character_portrait spearPortrait %spearName%" src="%spear%"></div> <div class="inputs_character_portrait"><img class="character_portrait axePortrait %axeName%" src="%axe%"></div>';
             let newhtml = html.replace('%sword%', characterArray[0].portrait);
             newhtml = newhtml.replace('%swordName%', characterArray[0].name);
             newhtml = newhtml.replace('%spear%', characterArray[1].portrait);
@@ -134,14 +142,7 @@ class UI{
 
             document.getElementById('player_two_portraits').innerHTML = newhtml;
 
-            function eventListeners(){
-                let portraits = document.querySelectorAll('.character_portraits');
-                portraits = Array.from(portraits)
-                
-                document.querySelector('.Lucina').addEventListener('click', characterSelect);
-            }
-
-            eventListeners();
+            
 
         } 
 
@@ -159,11 +160,3 @@ class UI{
     // Instanciate ui
 
     // Event listeners
-
-    /* function eventListeners(){
-        const portraits = document.getElementsByClassName('character_portraits');
-        Array.from(portraits).forEach(function(element) {
-            element.addEventListener('click', characterSelect());
-          });
-    } */
-    /* eventListeners(); */

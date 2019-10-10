@@ -20,7 +20,7 @@
                             <option class="game_option" value="Awakening">Awakening</option>
                             <option class="game_option" value="Fates">Fates</option>
                             <option class="game_option" value="Three Houses">Three Houses</option>
-                            <option class="game_option" value="Default" disabled selected>Select A Game</option>
+                            <option class="game_option" value="Default" hidden selected>Select A Game</option>
                         </select>
                         <div id="player_one_portraits" class="player_inputs_characters">
                             <!-- <div class="inputs_character_portrait"><img class="character_portrait" id="swordPortrait" src="%swordPortrait%"></div>
@@ -36,17 +36,13 @@
                 <div class="player_inputs_two flex_column">
                     <form action="" class="user_two_inputs flex_column user_form">
                         <input type="text" name="Input Name Here">
-                        <select class="player_game" name="Game" onchange="gameSelectTwo(this.value)">
+                        <select class="player_game" name="Game" onselect="gameSelectTwo(this.value)">
                             <option value="Awakening">Awakening</option>
                             <option value="Fates">Fates</option>
                             <option value="Three Houses">Three Houses</option>
-                            <option class="game_option" value="Default" disabled selected>Select A Game</option>
+                            <option class="game_option" value="Default" hidden selected>Select A Game</option>
                         </select>
-                        <div id="player_two_portraits" class="player_inputs_characters">
-                            <!-- <div class="inputs_character_portrait"><img class="character_portrait" id="swordPortrait" src="%swordPortrait%"></div>
-                            <div class="inputs_character_portrait"><img class="character_portrait" id="spearPortrait" src="%spearPortrait%"></div>
-                            <div class="inputs_character_portrait"><img class="character_portrait" id="axePortrait" src="%axePortrait%"></div> -->
-                        </div>
+                        <div id="player_two_portraits" class="player_inputs_characters"></div>
                     </form>
                 </div>
             </div>
