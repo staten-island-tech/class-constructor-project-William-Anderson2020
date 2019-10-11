@@ -60,17 +60,16 @@ class UI{
     const edelgard = new Character('Edelgard', 'Axe', 'Three Houses', 29, 13, 'img/portrait/edelgard.png', 'img/fullImage/edelgard.png');
     const threeHousesCharacters = [byleth, dimitri, edelgard];
 
+    const gamesList = ['Awakening', 'Fates', 'Three Houses'];
     const fullRoster = [...awakeningCharacters, ...fatesCharacters, ...threeHousesCharacters];
 
     // Take user inputs
         //Names
         //1p 2p
         //Game
-        function gameSelect(characterArray){
+        function gameSelect(input){
 
-            //console.log('query test');
-
-            switch(characterArray) {
+            switch(input.value) {
                 case 'Awakening':
                     characterArray = awakeningCharacters;
                     break;
@@ -92,39 +91,16 @@ class UI{
             newhtml = newhtml.replace('%axe%', characterArray[2].portrait);
             newhtml = newhtml.replace('%axeName%', characterArray[2].name);
 
-            document.getElementById('player_one_portraits').innerHTML = newhtml;
+            switch(input.id) {
+                case 'player_game_one':
+                    document.getElementById('player_one_portraits').innerHTML = newhtml;
+                    break;
+                default:
+                    document.getElementById('player_two_portraits').innerHTML = newhtml;
+                    break;
+            }
 
         }    
-
-        function gameSelectTwo(characterArray){
-
-            //console.log('query test');
-
-            switch(characterArray) {
-                case 'Awakening':
-                    characterArray = awakeningCharacters;
-                    break;
-                case 'Fates':
-                    characterArray = fatesCharacters;
-                    break;
-                case 'Three Houses':
-                    characterArray = threeHousesCharacters;
-                    break;
-                default:
-                    characterArray = null;
-            }
-
-            let html = '<div class="inputs_character_portrait"><img class="character_portrait swordPortrait" name="%swordName%" src="%sword%" onclick="characterSelect(this)"></div> <div class="inputs_character_portrait"><img class="character_portrait spearPortrait" name="%spearName%" src="%spear%" onclick="characterSelect(this)"></div> <div class="inputs_character_portrait"><img class="character_portrait axePortrait" name="%axeName%" src="%axe%" onclick="characterSelect(this)"></div>';
-            let newhtml = html.replace('%sword%', characterArray[0].portrait);
-            newhtml = newhtml.replace('%swordName%', characterArray[0].name);
-            newhtml = newhtml.replace('%spear%', characterArray[1].portrait);
-            newhtml = newhtml.replace('%spearName%', characterArray[1].name);
-            newhtml = newhtml.replace('%axe%', characterArray[2].portrait);
-            newhtml = newhtml.replace('%axeName%', characterArray[2].name);
-
-            document.getElementById('player_two_portraits').innerHTML = newhtml;
-
-        } 
 
         function determineCharacter(el){
             //fullRoster.forEach(char => char.name == el.name);
@@ -139,7 +115,18 @@ class UI{
             //console.log(el.name);
             let selection = determineCharacter(el);
             console.log(selection.name);
-            console.table(selection);
+
+            let sideParent = this.closest('.player_inputs_characters');
+            switch(sideParent.id) {
+                case 'player_one_portraits':
+                    playerSide = 'Player 1';
+                    break;
+                default:
+                    playerSide = 'Player 2';
+                    break;
+            }
+
+            console.log(playerSide);
 
         }
 
