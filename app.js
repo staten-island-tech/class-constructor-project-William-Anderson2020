@@ -157,13 +157,86 @@ class UI{
             }
         }
 
-        function combatResolution(playerOneCharacter, playerTwoCharacter){
-            switch (playerOneCharacter.weapon, playerTwoCharacter.weapon){
-                case sword, axe:
+        function combatResolution(){
 
-                default:
-                    //run stats function
-            }
+            if((playerOneCharacter == null) || (playerTwoCharacter == null)){
+                return alert('Please select two fighters.');
+            } else{
+
+                let one = playerOneCharacter;
+                let two = playerTwoCharacter;
+
+                function tieRes(one, two){
+
+                    let oneRes = (one.hp - two.atk);
+                    let twoRes = (two.hp - one.atk);
+
+                    if( oneRes > twoRes){
+                        alert(`${one.name} Wins! They have ${oneRes} hp remaining.`)
+                    } else if ( oneRes < twoRes){
+                        alert(`${two.name} Wins! They have ${twoRes} hp remaining.`)
+                    } else {
+                        alert('It would seem we have a tie...');
+                    }
+                }
+
+                function hpCalc(adv, dis){
+                    let advRes = (adv.hp - dis.atk);
+                    let disRes = (dis.hp - (adv.atk*2));
+
+                    if (advRes > disRes){
+                        alert(`${adv.name} Wins! Their attack was super effective! They have ${advRes} hp remaining.`);
+                    } else if (advRes < disRes){
+                        alert(`${dis.name} Wins! They were weak to ${adv.name}'s ${adv.weapon} attack. They have ${disRes} hp remaining.`);
+                    } else{
+                        alert('It would seem we have a tie...');
+                    }
+                }
+
+                if(one.weapon == 'Sword'){
+                    switch(two.weapon){
+                        case 'Sword':
+                            tieRes(one,two);
+                            break;
+                        case 'Spear':
+                            hpCalc(one,two);
+                            break;
+                        case 'Axe':
+                            hpCalc(two,one);
+                            break;
+                        default:
+                            alert('Defaulting. Check logs');
+                    }
+                } else if(one.weapon == 'Spear'){
+                    switch(two.weapon){
+                        case 'Spear':
+                            tieRes(one,two);
+                            break;
+                        case 'Axe':
+                            hpCalc(one,two);
+                            break;
+                        case 'Sword':
+                            hpCalc(two,one);
+                            break;
+                        default:
+                            alert('Defaulting. Check logs');
+                    }
+                } else if(one.weapon == 'Axe'){
+                    switch(two.weapon){
+                        case 'Axe':
+                            tieRes(one,two);
+                            break;
+                        case 'Sword':
+                            hpCalc(one,two);
+                            break;
+                        case 'Spear':
+                            hpCalc(two,one);
+                            break;
+                        default:
+                            alert('Defaulting. Check logs');
+                    }
+                }
+            }             
         }
 
 
