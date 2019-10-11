@@ -84,7 +84,7 @@ class UI{
                     characterArray = null;
             }
 
-            let html = '<div class="inputs_character_portrait"><img class="character_portrait swordPortrait %swordName%" src="%sword%"></div> <div class="inputs_character_portrait"><img class="character_portrait spearPortrait %spearName%" src="%spear%"></div> <div class="inputs_character_portrait"><img class="character_portrait axePortrait %axeName%" src="%axe%"></div>';
+            let html = '<div class="inputs_character_portrait"><img class="character_portrait swordPortrait" name="%swordName%" src="%sword%" onclick="characterSelect(this)"></div> <div class="inputs_character_portrait"><img class="character_portrait spearPortrait" name="%spearName%" src="%spear%" onclick="characterSelect(this)"></div> <div class="inputs_character_portrait"><img class="character_portrait axePortrait" name="%axeName%" src="%axe%" onclick="characterSelect(this)"></div>';
             let newhtml = html.replace('%sword%', characterArray[0].portrait);
             newhtml = newhtml.replace('%swordName%', characterArray[0].name);
             newhtml = newhtml.replace('%spear%', characterArray[1].portrait);
@@ -93,24 +93,6 @@ class UI{
             newhtml = newhtml.replace('%axeName%', characterArray[2].name);
 
             document.getElementById('player_one_portraits').innerHTML = newhtml;
-
-            function eventListeners(){
-                let portraits = document.querySelectorAll('.character_portrait');
-                portraits.forEach(function(el){
-                    el.addEventListener('click', characterSelect('click', el));
-                });
-                console.log(portraits);
-            }
-            
-            function characterSelect(event, el){
-                if (event.type == 'click'){
-                    console.log(el);
-                } else{
-                    console.log('fail');
-                }
-            }
-
-            eventListeners();
 
         }    
 
@@ -132,7 +114,7 @@ class UI{
                     characterArray = null;
             }
 
-            let html = '<div class="inputs_character_portrait"><img class="character_portrait swordPortrait %swordName%" src="%sword%" onclick="characterSelect()"></div> <div class="inputs_character_portrait"><img class="character_portrait spearPortrait %spearName%" src="%spear%"></div> <div class="inputs_character_portrait"><img class="character_portrait axePortrait %axeName%" src="%axe%"></div>';
+            let html = '<div class="inputs_character_portrait"><img class="character_portrait swordPortrait" name="%swordName%" src="%sword%" onclick="characterSelect(this)"></div> <div class="inputs_character_portrait"><img class="character_portrait spearPortrait" name="%spearName%" src="%spear%" onclick="characterSelect(this)"></div> <div class="inputs_character_portrait"><img class="character_portrait axePortrait" name="%axeName%" src="%axe%" onclick="characterSelect(this)"></div>';
             let newhtml = html.replace('%sword%', characterArray[0].portrait);
             newhtml = newhtml.replace('%swordName%', characterArray[0].name);
             newhtml = newhtml.replace('%spear%', characterArray[1].portrait);
@@ -142,9 +124,26 @@ class UI{
 
             document.getElementById('player_two_portraits').innerHTML = newhtml;
 
-            
-
         } 
+
+        function determineCharacter(el){
+            //fullRoster.forEach(char => char.name == el.name);
+            for(i=0; i<fullRoster.length; i++){
+                if (el.name == fullRoster[i].name){
+                    return fullRoster[i];
+                }
+            }
+        }
+
+        function characterSelect(el){
+            //console.log(el.name);
+            let selection = determineCharacter(el);
+            console.log(selection.name);
+            console.table(selection);
+
+        }
+
+        
 
         //Character
 
