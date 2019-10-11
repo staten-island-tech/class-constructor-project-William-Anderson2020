@@ -25,10 +25,10 @@
 // View
 
 
-function displayCharacterChoices(e){
-    let playerInput = document.querySelector('player');
+/* function displayCharacterChoices(e){
+    let playerInput = document.querySelector('.player');
     
-}
+} */
 
 class UI{
     constructor(playerOneCharacter, playerTwoCharacter){
@@ -114,9 +114,9 @@ class UI{
         function characterSelect(el){
             //console.log(el.name);
             let selection = determineCharacter(el);
-            console.log(selection.name);
+            //console.log(selection.name);
 
-            let sideParent = this.closest('.player_inputs_characters');
+            let sideParent = el.closest('.player_inputs_characters');
             switch(sideParent.id) {
                 case 'player_one_portraits':
                     playerSide = 'Player 1';
@@ -126,9 +126,46 @@ class UI{
                     break;
             }
 
-            console.log(playerSide);
+            switch(playerSide){
+                case 'Player 1':
+                    display = document.getElementById('game_results_one');
+                    //userName = document.getElementById('player_one_username').innerText;
+                    break;
+                default:
+                    display = document.getElementById('game_results_two');
+                    //userName = document.getElementById('player_two_username').innerText;
+            }
 
+            
+            //console.log(playerSide); //Player side detection functions
+
+            const html = '<img class="player_fullImage" src="%fullImage%"> <div class="player_stats"> <div class="player_name">%userName%</div> <div class="player_character">%characterName%</div> <div class="player_hp">HP: %hp%</div> <div class="player_atk">ATK: %atk%</div>';
+
+            let newhtml = html.replace('%fullImage%', selection.fullImage);
+            newhtml = newhtml.replace('%characterName%', selection.name);
+            newhtml = newhtml.replace('%hp%', selection.hp);
+            newhtml = newhtml.replace('%atk%', selection.atk);
+            //newhtml = newhtml.replace('%userName%', userName);
+
+            display.innerHTML = newhtml;
+
+            switch(playerSide){
+                case 'Player 1':
+                    return (playerOneCharacter = selection);
+                default:
+                    return (playerTwoCharacter = selection);
+            }
         }
+
+        function combatResolution(playerOneCharacter, playerTwoCharacter){
+            switch (playerOneCharacter.weapon, playerTwoCharacter.weapon){
+                case sword, axe:
+
+                default:
+                    //run stats function
+            }
+        }
+
 
         
 

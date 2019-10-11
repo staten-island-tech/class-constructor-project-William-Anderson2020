@@ -15,7 +15,7 @@
             <div class="player_inputs">
                 <div class="player_inputs_one">
                     <form action="" class="user_one_inputs flex_column user_form">
-                        <input type="text" name="Input Name Here">
+                        <input id="player_one_username" type="text" name="Input Name Here">
                         <select class="player_game" id="player_game_one" name="Game" onchange="gameSelect(this)">
                             <option class="game_option" value="Awakening">Awakening</option>
                             <option class="game_option" value="Fates">Fates</option>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="player_inputs_two flex_column">
                     <form action="" class="user_two_inputs flex_column user_form">
-                        <input type="text" name="Input Name Here">
+                        <input id="player_two_username" type="text" name="Input Name Here">
                         <select class="player_game" id="player_game_two" name="Game" onchange="gameSelect(this)">
                             <option value="Awakening">Awakening</option>
                             <option value="Fates">Fates</option>
@@ -47,19 +47,19 @@
                 </div>
             </div>
             <div class="game_results">
-                <div class="game_results_one">
-                    <img class="player_fullImage" src="%fullImage%">
+                <div id="game_results_one">
+                    <!-- <img class="player_fullImage" src="%fullImage%">
                     <div class="playere_stats">
                         <div class="player_name">%userName%</div>
                         <div class="player_character">%characterName%</div>
                         <div class="player_hp">%hp%</div>
-                        <div class="player_atk">%atk%</div>
+                        <div class="player_atk">%atk%</div> -->
                     </div>
                 </div>
                 <div class="game_results_middle">
 
                 </div>
-                <div class="game_results_two">
+                <div id="game_results_two">
 
                 </div>
 
