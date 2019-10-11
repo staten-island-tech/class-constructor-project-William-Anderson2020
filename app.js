@@ -47,7 +47,7 @@ class UI{
     // Instanciate Characters
     const lucina = new Character('Lucina', 'Sword', 'Awakening', 27, 9, 'img/portrait/lucina.png', 'img/fullImage/lucina.png');
     const frederick = new Character('Frederick', 'Spear', 'Awakening', 28, 13, 'img/portrait/frederick.png', 'img/fullImage/frederick.png');
-    const basilio = new Character('Basilio', 'Axe', 'Awakening', 56, 30, 'img/portrait/basilio.png', 'img/fullImage/basilio.png')
+    const basilio = new Character('Basilio', 'Axe', 'Awakening', 23, 11, 'img/portrait/basilio.png', 'img/fullImage/basilio.png')
     const awakeningCharacters = [lucina, frederick, basilio];
 
     const corrin = new Character('Corrin', 'Sword', 'Fates', 19, 7, 'img/portrait/corrin.png', 'img/fullImage/corrin.png');
