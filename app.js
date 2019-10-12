@@ -11,7 +11,7 @@
 
     //Character Class
     class Character{
-        constructor(name, weapon, game, hp, atk, portrait, fullImage){
+        constructor(name, weapon, game, hp, atk, portrait, fullImage, pronouns){
             this.name = name;
             this.weapon = weapon;
             this.game = game;
@@ -19,6 +19,7 @@
             this.atk = atk;
             this.portrait = portrait;
             this.fullImage = fullImage;
+            this.pronouns = pronouns;
         }
     }
 
@@ -45,19 +46,23 @@ class UI{
     
 
     // Instanciate Characters
-    const lucina = new Character('Lucina', 'Sword', 'Awakening', 27, 9, 'img/portrait/lucina.png', 'img/fullImage/lucina.png');
-    const frederick = new Character('Frederick', 'Spear', 'Awakening', 28, 13, 'img/portrait/frederick.png', 'img/fullImage/frederick.png');
-    const basilio = new Character('Basilio', 'Axe', 'Awakening', 23, 11, 'img/portrait/basilio.png', 'img/fullImage/basilio.png')
+
+    const pronounsM = ['He', 'his', 'His'];
+    const pronounsF = ['She', 'her', 'Her'];
+
+    const lucina = new Character('Lucina', 'Sword', 'Awakening', 27, 9, 'img/portrait/lucina.png', 'img/fullImage/lucina.png', pronounsF);
+    const frederick = new Character('Frederick', 'Spear', 'Awakening', 28, 13, 'img/portrait/frederick.png', 'img/fullImage/frederick.png', pronounsM);
+    const basilio = new Character('Basilio', 'Axe', 'Awakening', 23, 11, 'img/portrait/basilio.png', 'img/fullImage/basilio.png', pronounsM);
     const awakeningCharacters = [lucina, frederick, basilio];
 
-    const corrin = new Character('Corrin', 'Sword', 'Fates', 19, 7, 'img/portrait/corrin.png', 'img/fullImage/corrin.png');
-    const hinoka = new Character('Hinoka', 'Spear', 'Fates', 23, 9, 'img/portrait/hinoka.png', 'img/fullImage/hinoka.png');
-    const camilla = new Character('Camilla', 'Axe', 'Fates', 25, 12, 'img/portrait/camilla.png', 'img/fullImage/camilla.png');
+    const corrin = new Character('Corrin', 'Sword', 'Fates', 19, 7, 'img/portrait/corrin.png', 'img/fullImage/corrin.png', pronounsM);
+    const hinoka = new Character('Hinoka', 'Spear', 'Fates', 23, 9, 'img/portrait/hinoka.png', 'img/fullImage/hinoka.png', pronounsF);
+    const camilla = new Character('Camilla', 'Axe', 'Fates', 25, 12, 'img/portrait/camilla.png', 'img/fullImage/camilla.png', pronounsF);
     const fatesCharacters = [corrin, hinoka, camilla];
 
-    const byleth = new Character('Byleth', 'Sword', 'Three Houses', 27, 13, 'img/portrait/byleth.png', 'img/fullImage/byleth.png');
-    const dimitri = new Character('Dimitri', 'Spear', 'Three Houses', 28, 12, 'img/portrait/dimitri.png', 'img/fullImage/dimitri.png');
-    const edelgard = new Character('Edelgard', 'Axe', 'Three Houses', 29, 13, 'img/portrait/edelgard.png', 'img/fullImage/edelgard.png');
+    const byleth = new Character('Byleth', 'Sword', 'Three Houses', 27, 13, 'img/portrait/byleth.png', 'img/fullImage/byleth.png', pronounsM);
+    const dimitri = new Character('Dimitri', 'Spear', 'Three Houses', 28, 12, 'img/portrait/dimitri.png', 'img/fullImage/dimitri.png', pronounsM);
+    const edelgard = new Character('Edelgard', 'Axe', 'Three Houses', 29, 13, 'img/portrait/edelgard.png', 'img/fullImage/edelgard.png', pronounsF);
     const threeHousesCharacters = [byleth, dimitri, edelgard];
 
     const gamesList = ['Awakening', 'Fates', 'Three Houses'];
@@ -139,12 +144,13 @@ class UI{
             
             //console.log(playerSide); //Player side detection functions
 
-            const html = '<img class="player_fullImage" src="%fullImage%"> <div class="player_stats"> <div class="player_name">%userName%</div> <div class="player_character">%characterName%</div> <div class="player_hp">HP: %hp%</div> <div class="player_atk">ATK: %atk%</div>';
+            const html = '<div class="player_name">%userName%</div> <div class="fullImage_Container"> <img class="player_fullImage %class%" src="%fullImage%"> </div> <div class="player_stats"> <div class="player_character">%characterName%</div> <div class="player_hp">HP: %hp%</div> <div class="player_atk">ATK: %atk%</div>';
 
             let newhtml = html.replace('%fullImage%', selection.fullImage);
             newhtml = newhtml.replace('%characterName%', selection.name);
             newhtml = newhtml.replace('%hp%', selection.hp);
             newhtml = newhtml.replace('%atk%', selection.atk);
+            newhtml = newhtml.replace('%class%', selection.name)
             //newhtml = newhtml.replace('%userName%', userName);
 
             display.innerHTML = newhtml;
@@ -160,23 +166,23 @@ class UI{
         function combatResolution(){
 
             if((playerOneCharacter == null) || (playerTwoCharacter == null)){
-                return alert('Please select two fighters.');
+                alert('Please select two fighters.');
             } else{
 
                 let one = playerOneCharacter;
                 let two = playerTwoCharacter;
+                let entry = '';
 
                 function tieRes(one, two){
-
                     let oneRes = (one.hp - two.atk);
                     let twoRes = (two.hp - one.atk);
 
                     if( oneRes > twoRes){
-                        alert(`${one.name} Wins! They have ${oneRes} hp remaining.`)
+                        entry = (`${one.name} won against ${two.name}! ${one.pronouns[0]} dealt ${one.atk} to ${one.pronouns[1]} opponent and has ${oneRes} hp remaining.`);
                     } else if ( oneRes < twoRes){
-                        alert(`${two.name} Wins! They have ${twoRes} hp remaining.`)
+                        entry =(`${two.name} won against ${one.name}! ${two.pronouns[0]} dealt ${two.atk} to ${two.pronouns[1]} opponent and has ${twoRes} hp remaining.`);
                     } else {
-                        alert('It would seem we have a tie...');
+                        entry =(`It would seem we have a tie between ${one.name} and ${two.name}`);
                     }
                 }
 
@@ -185,11 +191,11 @@ class UI{
                     let disRes = (dis.hp - (adv.atk*2));
 
                     if (advRes > disRes){
-                        alert(`${adv.name} Wins! Their attack was super effective! They have ${advRes} hp remaining.`);
+                        entry =(`${adv.name} won against ${dis.name}! ${adv.pronouns[2]}'s ${adv.weapon} attack was super effective! ${adv.pronouns[0]} dealt ${(2*adv.atk)} damage to ${dis.name} and has ${advRes} hp remaining.`);
                     } else if (advRes < disRes){
-                        alert(`${dis.name} Wins! They were weak to ${adv.name}'s ${adv.weapon} attack. They have ${disRes} hp remaining.`);
+                        entry =(`${dis.name} won against ${adv.name}! ${dis.pronouns[0]} was weak to ${adv.name}'s ${adv.weapon} attack. ${dis.pronouns[0]} has ${disRes} hp remaining after taking ${(2*adv.atk)} damage from ${dis.pronouns[1]} opponent.`);
                     } else{
-                        alert('It would seem we have a tie...');
+                        entry =(`It would seem we have a tie between ${adv.name} and ${dis.name}`);
                     }
                 }
 
@@ -236,6 +242,10 @@ class UI{
                             alert('Defaulting. Check logs');
                     }
                 }
+
+                let html = '<div class="log_entry">%entry%</div>';
+                let newhtml = html.replace('%entry%', entry);
+                document.querySelector('#combat_log').insertAdjacentHTML("afterbegin", newhtml);
             }             
         }
 

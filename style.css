@@ -62,3 +62,96 @@ html{
     flex-direction: row;
     justify-content: space-between;
 }
+
+#game_results{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.game_results_section{
+    width: 30vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: red;
+}
+
+.fullImage_Container{
+    height: 60rem;
+    width: 55rem;
+    /* position: relative; */
+    background-color: rgba(255,255,255,0.5);
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+}
+
+.player_fullImage{
+    /* height: 60rem;
+    width: 55rem; */
+    object-fit: none;
+}
+
+img.Lucina{
+    transform: scale(.7);
+    position: relative;
+    bottom: 25rem;
+    right: 11rem;
+}
+
+img.Frederick{
+    transform: scale(.2);
+    position: relative;
+    bottom: 140rem;
+    right: 38rem;
+}
+
+img.Basilio{
+    transform: scale(.4);
+    position: relative;
+    bottom: 35rem;
+    right: 50rem;
+}
+
+img.Corrin{
+    transform: scale(.2);
+    position: relative;
+    bottom: 135rem;
+    right: 120rem;
+}
+
+img.Hinoka{
+    transform: scale(.2);
+    position: relative;
+    bottom: 145rem;
+    right: 150rem; 
+}
+
+img.Camilla{
+    transform: scale(.15);
+    position: relative;
+    bottom: 188rem;
+    right: 100rem;
+}
+
+img.Byleth{
+    transform: scale(.35);
+    position: relative;
+    bottom: 55rem;
+    right: 60rem;
+}
+
+img.Dimitri{
+    transform: scale(.35);
+    position: relative;
+    bottom: 60rem;
+    right: 80rem;
+}
+
+img.Edelgard{
+    position: relative;
+    transform: scale(.6);
+    bottom: 22rem;
+    right: 10rem;
+}
