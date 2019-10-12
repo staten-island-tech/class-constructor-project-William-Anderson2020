@@ -144,7 +144,7 @@ class UI{
             
             //console.log(playerSide); //Player side detection functions
 
-            const html = '<div class="player_name">%userName%</div> <div class="fullImage_Container"> <img class="player_fullImage %class%" src="%fullImage%"> </div> <div class="player_stats"> <div class="player_character">%characterName%</div> <div class="player_hp">HP: %hp%</div> <div class="player_atk">ATK: %atk%</div>';
+            const html = '<div class="game_results_section"><div class="player_name">%userName%</div> <div class="fullImage_Container"> <img class="player_fullImage %class%" src="%fullImage%"> </div> <div class="player_stats"> <div class="player_character">%characterName%</div> <div class="player_hp">HP:<span class="hp_highlight"> %hp% </span></div> <div class="player_atk">ATK: <span class="atk_highlight">%atk%</span</div></div>';
 
             let newhtml = html.replace('%fullImage%', selection.fullImage);
             newhtml = newhtml.replace('%characterName%', selection.name);
@@ -178,11 +178,11 @@ class UI{
                     let twoRes = (two.hp - one.atk);
 
                     if( oneRes > twoRes){
-                        entry = (`${one.name} won against ${two.name}! ${one.pronouns[0]} dealt ${one.atk} to ${one.pronouns[1]} opponent and has ${oneRes} hp remaining.`);
+                        entry = (`<span class="name_highlight">${one.name}</span> won against <span class="name_highlight">${two.name}</span>! ${one.pronouns[0]} dealt <span class="atk_highlight">${one.atk}</span> to ${one.pronouns[1]} opponent and has <span class="hp_highlight">${oneRes}</span> hp remaining.`);
                     } else if ( oneRes < twoRes){
-                        entry =(`${two.name} won against ${one.name}! ${two.pronouns[0]} dealt ${two.atk} to ${two.pronouns[1]} opponent and has ${twoRes} hp remaining.`);
+                        entry =(`<span class="name_highlight">${two.name}</span> won against <span class="name_highlight">${one.name}</span>! ${two.pronouns[0]} dealt <span class="atk_highlight">${two.atk}</span> to ${two.pronouns[1]} opponent and has <span class="hp_highlight">${twoRes}</span> hp remaining.`);
                     } else {
-                        entry =(`It would seem we have a tie between ${one.name} and ${two.name}`);
+                        entry =(`It would seem we have a tie between <span class="name_highlight">${one.name}</span> and <span class="name_highlight">${two.name}</span>`);
                     }
                 }
 
@@ -191,11 +191,11 @@ class UI{
                     let disRes = (dis.hp - (adv.atk*2));
 
                     if (advRes > disRes){
-                        entry =(`${adv.name} won against ${dis.name}! ${adv.pronouns[2]}'s ${adv.weapon} attack was super effective! ${adv.pronouns[0]} dealt ${(2*adv.atk)} damage to ${dis.name} and has ${advRes} hp remaining.`);
+                        entry =(`<span class="name_highlight">${adv.name}</span> won against <span class="name_highlight">${dis.name}</span>! ${adv.pronouns[2]} ${adv.weapon} attack was super effective! ${adv.pronouns[0]} dealt <span class="atk_highlight">${(2*adv.atk)}</span> damage to <span class="name_highlight">${dis.name}</span> and has <span class="hp_highlight">${advRes}</span> hp remaining.`);
                     } else if (advRes < disRes){
-                        entry =(`${dis.name} won against ${adv.name}! ${dis.pronouns[0]} was weak to ${adv.name}'s ${adv.weapon} attack. ${dis.pronouns[0]} has ${disRes} hp remaining after taking ${(2*adv.atk)} damage from ${dis.pronouns[1]} opponent.`);
+                        entry =(`<span class="name_highlight">${dis.name}</span> won against <span class="name_highlight">${adv.name}</span>! ${dis.pronouns[0]} was weak to <span class="name_highlight">${adv.name}'s</span> ${adv.weapon} attack. ${dis.pronouns[0]} has <span class="hp_highlight">${disRes}</span> hp remaining after taking <span class="atk_highlight">${(2*adv.atk)}</span> damage from ${dis.pronouns[1]} opponent.`);
                     } else{
-                        entry =(`It would seem we have a tie between ${adv.name} and ${dis.name}`);
+                        entry =(`It would seem we have a tie between <span class="name_highlight">${adv.name}</span> and <span class="name_highlight">${dis.name}</span>`);
                     }
                 }
 

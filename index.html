@@ -5,12 +5,13 @@
         <title>Class-Constructor</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Acme|Bitter&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class="container">
+        <div class="container flex_column">
             <div class="header">
-                <div class="header_text"></div>
+                <div class="header_text">Battle Simulator</div>
             </div>
             <div class="player_inputs">
                 <div class="player_inputs_one">
@@ -47,19 +48,21 @@
                 </div>
             </div>
             <div id="game_results" class="game_results">
-                <div id="game_results_one" class="game_results_section">
+                <div id="game_results_one" class="game_results_section_container">
                     <!-- <img class="player_fullImage" src="%fullImage%">
-                    <div class="playere_stats">
+                    <div class="player_stats">
                         <div class="player_name">%userName%</div>
                         <div class="player_character">%characterName%</div>
                         <div class="player_hp">%hp%</div>
                         <div class="player_atk">%atk%</div>
                     </div>-->
                 </div>
-                <div id="game_results_middle" class="game_results_section">
-                    <button id="battle_button" type="button" onclick="combatResolution()">Battle!</button>
+                <div id="game_results_middle" class="game_results_section_container flex_column">
+                    <div class="button_container flex_column">
+                        <button id="battle_button" type="button" onclick="combatResolution()">Battle!</button>
+                    </div>
                 </div>
-                <div id="game_results_two" class="game_results_section">
+                <div id="game_results_two" class="game_results_section_container">
 
                 </div>
 

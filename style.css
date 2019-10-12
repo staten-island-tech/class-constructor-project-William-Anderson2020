@@ -3,10 +3,23 @@
     --cp-primary:#fff;
     --cp-secondary:#fff;
     --cp-tertiary:#fff;
+
+    --highlight-name: #ffe37b;
+    --highlight-hp:#0957E3;
+    --highlight-atk:#E02806;
 }
 
 html{
     font-size: 62.5%;
+    background:  linear-gradient(0deg,rgba(145, 145, 145,.3),rgba(145, 145, 145,.3)), url(img/bg.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 *, *::after, *::before{
@@ -17,18 +30,37 @@ html{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
+
+.header{
+    width: 90vw;
+    background-color: rgba(145, 145, 145,.7);
+    text-align: center;
+    border-radius: 2rem;
+}
+
+.header_text{
+    font-size: 8rem;
+    font-family: 'Bitter', serif;
+    color: var(--highlight-name);
+}
+
 
 .player_inputs{
     display: flex;
     align-items: center;
-    justify-content: center;
-    /* width: 30%; */
+    justify-content: space-around;
+    background-color: rgba(145, 145, 145,.7);
+    width: 90vw;
+    border-radius: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    padding: 2rem;
 }
 
 .player_inputs_ready{
-    width: 30vw;
+    width: (30vw - 4rem);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,6 +70,7 @@ html{
     /*height: 20vh;*/
     justify-content: space-around;
     width: 30vw;
+    height: 25vh;
 }
 
 .character_portrait{
@@ -50,6 +83,7 @@ html{
     border-width: 1px;
     border-color: black;
     object-position: 50% .25rem; 
+    background-color:rgba(255,255,255,0.5);
 }
 
 .character_portrait:hover{
@@ -61,6 +95,7 @@ html{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 9vw;
 }
 
 #game_results{
@@ -70,13 +105,19 @@ html{
     align-content: center;
 }
 
+.game_results_section_container{
+    width: 30vw;
+    height: 90vh;
+}
+
 .game_results_section{
     width: 30vw;
     height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: red;
+    border-radius: 2rem;
+    background-color: rgba(145, 145, 145,.7);
 }
 
 .fullImage_Container{
@@ -103,7 +144,7 @@ img.Lucina{
 img.Frederick{
     transform: scale(.2);
     position: relative;
-    bottom: 140rem;
+    bottom: 145rem;
     right: 38rem;
 }
 
@@ -117,7 +158,7 @@ img.Basilio{
 img.Corrin{
     transform: scale(.2);
     position: relative;
-    bottom: 135rem;
+    bottom: 138rem;
     right: 120rem;
 }
 
@@ -154,4 +195,92 @@ img.Edelgard{
     transform: scale(.6);
     bottom: 22rem;
     right: 10rem;
+}
+
+.game_results_section{
+    font-size: 5rem;
+}
+
+.player_character{
+    color: var(--highlight-name);
+    border-bottom-color: var(--highlight-name);
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+}
+
+.player_stats{
+    width: 25vw;
+    text-align: left;
+    font-family: 'Bitter', serif;
+}
+
+.name_highlight{
+    color: var(--highlight-name);
+}
+
+.hp_highlight{
+    color: var(--highlight-hp);
+}
+
+.atk_highlight{
+    color: var(--highlight-atk);
+}
+
+.combat_log{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.log_entry{
+    width: 90vw;
+    font-family: 'Bitter', serif;
+    font-size: 4rem;
+    text-align: center;
+    background-color: rgba(145, 145, 145,.7);
+    border-radius: 2rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.button_container{
+    background-color: rgba(145, 145, 145,.7);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    width: 20vw;
+    height: 20vw;
+}
+
+#battle_button{
+    width: 10vw;
+    height: 10vw;
+    clip-path: circle(48% at 49% 49%);
+    border-style: none;
+    font-family: 'Bitter', serif;
+    font-size: 4rem;
+    background-color: #E1DCC9;
+    color: black;
+}
+
+#battle_button:hover{
+    transform: scale(1.1);
+    transition: .5s;
+}
+
+.log_entry .name_highlight:hover{
+    text-decoration: underline;
+    text-decoration-color: -var(--highlight-name);
+    transition: .5s;
+}
+
+.log_entry .hp_highlight:hover{
+    text-decoration: underline;
+    text-decoration-color: -var(--highlight-hp);
+    transition: .5s;
+}
+
+.log_entry .atk_highlight:hover{
+    text-decoration: underline;
+    text-decoration-color: -var(--highlight-atk);
+    transition: .5s;
 }
