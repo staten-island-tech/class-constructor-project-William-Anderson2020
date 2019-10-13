@@ -16,27 +16,30 @@
             <div class="player_inputs">
                 <div class="player_inputs_one">
                     <form action="" class="user_one_inputs flex_column user_form">
-                        <input id="player_one_username" type="text" name="Input Name Here">
+                        <div class="player_header name_highlight">Player 1</div>
                         <select class="player_game" id="player_game_one" name="Game" onchange="gameSelect(this)">
                             <option class="game_option" value="Awakening">Awakening</option>
                             <option class="game_option" value="Fates">Fates</option>
                             <option class="game_option" value="Three Houses">Three Houses</option>
                             <option class="game_option" value="Default" hidden selected>Select A Game</option>
                         </select>
-                        <div id="player_one_portraits" class="player_inputs_characters">
-                            <!-- <div class="inputs_character_portrait"><img class="character_portrait" id="swordPortrait" src="%swordPortrait%"></div>
-                            <div class="inputs_character_portrait"><img class="character_portrait" id="spearPortrait" src="%spearPortrait%"></div>
-                            <div class="inputs_character_portrait"><img class="character_portrait" id="axePortrait" src="%axePortrait%"></div> -->
+                        <div id="player_one_portraits" class="player_inputs_characters"></div>
+                    </form>
+                </div>
+                <div class="player_inputs_middle flex_column">
+                    <div class="inputs_instructions name_highlight">Choose Your Fighters</div>
+                    <form class="player_inputs_ready">
+                        <div class="player_inputs_ready_form">
+                            <input type="radio" name="player_count" id="count_one_player" class="player_inputs_ready_form">One Player<br>
+                        </div>
+                        <div class="player_inputs_ready_form">
+                            <input type="radio" name="player_count" id="count_two_player" class="player_inputs_ready_form">Two Players<br>
                         </div>
                     </form>
                 </div>
-                <div class="player_inputs_ready">
-                    <input type="radio" name="player_count" class="player_inputs_ready_form">One Player<br>
-                    <input type="radio" name="player_count" class="player_inputs_ready_form">Two Players<br>
-                </div>
                 <div class="player_inputs_two flex_column">
                     <form action="" class="user_two_inputs flex_column user_form">
-                        <input id="player_two_username" type="text" name="Input Name Here">
+                        <div class="player_header name_highlight">Player 2</div>
                         <select class="player_game" id="player_game_two" name="Game" onchange="gameSelect(this)">
                             <option value="Awakening">Awakening</option>
                             <option value="Fates">Fates</option>
@@ -48,34 +51,17 @@
                 </div>
             </div>
             <div id="game_results" class="game_results">
-                <div id="game_results_one" class="game_results_section_container">
-                    <!-- <img class="player_fullImage" src="%fullImage%">
-                    <div class="player_stats">
-                        <div class="player_name">%userName%</div>
-                        <div class="player_character">%characterName%</div>
-                        <div class="player_hp">%hp%</div>
-                        <div class="player_atk">%atk%</div>
-                    </div>-->
-                </div>
+                <div id="game_results_one" class="game_results_section_container"></div>
                 <div id="game_results_middle" class="game_results_section_container flex_column">
                     <div class="button_container flex_column">
                         <button id="battle_button" type="button" onclick="combatResolution()">Battle!</button>
                     </div>
                 </div>
-                <div id="game_results_two" class="game_results_section_container">
-
-                </div>
+                <div id="game_results_two" class="game_results_section_container"></div>
 
             </div>
-            <div id="combat_log">
-                <!-- <div class="log_entry">%entry%</div> -->
-            </div>
+            <div id="combat_log"></div>
         </div>
-
-
-
-
-
         
         <script src="app.js"></script>
     </body>

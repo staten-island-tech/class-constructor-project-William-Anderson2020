@@ -46,6 +46,11 @@ html, body {
     color: var(--highlight-name);
 }
 
+.inputs_instructions{
+    font-size: 4rem;
+    font-family: 'Bitter', serif;
+    margin-bottom: 1rem;
+}
 
 .player_inputs{
     display: flex;
@@ -56,14 +61,31 @@ html, body {
     border-radius: 2rem;
     margin-top: 4rem;
     margin-bottom: 4rem;
-    padding: 2rem;
+    padding-bottom: 2rem;
+}
+
+.player_header{
+    font-family: 'Bitter', serif;
+    font-size: 4rem;
 }
 
 .player_inputs_ready{
-    width: (30vw - 4rem);
+    width: 30vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.player_inputs_ready_form{
+    font-family: 'Bitter', serif;
+    font-size: 2rem;
+    color: var(--highlight-name);
+}
+
+.player_game{
+    font-family: 'Bitter', serif;
 }
 
 .user_form{
@@ -74,8 +96,8 @@ html, body {
 }
 
 .character_portrait{
-    width: 9vw;
-    height: 9vw;
+    width: 8.5vw;
+    height: 8.5vw;
     overflow: hidden;
     object-fit: cover;
     margin: .5vw;
@@ -118,11 +140,12 @@ html, body {
     align-items: center;
     border-radius: 2rem;
     background-color: rgba(145, 145, 145,.7);
+    padding: 4rem;
 }
 
 .fullImage_Container{
     height: 60rem;
-    width: 55rem;
+    width: 25vw;
     /* position: relative; */
     background-color: rgba(255,255,255,0.5);
     clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
@@ -241,7 +264,7 @@ img.Edelgard{
     background-color: rgba(145, 145, 145,.7);
     border-radius: 2rem;
     padding: 1rem;
-    margin: 1rem;
+    margin-top: 4rem;
 }
 
 .button_container{

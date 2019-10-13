@@ -68,6 +68,9 @@ class UI{
     const gamesList = ['Awakening', 'Fates', 'Three Houses'];
     const fullRoster = [...awakeningCharacters, ...fatesCharacters, ...threeHousesCharacters];
 
+    let playerOneCharacter = '';
+    let playerTwoCharacter = '';
+
     // Take user inputs
         //Names
         //1p 2p
@@ -117,9 +120,7 @@ class UI{
         }
 
         function characterSelect(el){
-            //console.log(el.name);
             let selection = determineCharacter(el);
-            //console.log(selection.name);
 
             let sideParent = el.closest('.player_inputs_characters');
             switch(sideParent.id) {
@@ -134,24 +135,18 @@ class UI{
             switch(playerSide){
                 case 'Player 1':
                     display = document.getElementById('game_results_one');
-                    //userName = document.getElementById('player_one_username').innerText;
                     break;
                 default:
                     display = document.getElementById('game_results_two');
-                    //userName = document.getElementById('player_two_username').innerText;
             }
 
-            
-            //console.log(playerSide); //Player side detection functions
-
-            const html = '<div class="game_results_section"><div class="player_name">%userName%</div> <div class="fullImage_Container"> <img class="player_fullImage %class%" src="%fullImage%"> </div> <div class="player_stats"> <div class="player_character">%characterName%</div> <div class="player_hp">HP:<span class="hp_highlight"> %hp% </span></div> <div class="player_atk">ATK: <span class="atk_highlight">%atk%</span</div></div>';
+            const html = '<div class="game_results_section"> <div class="fullImage_Container"> <img class="player_fullImage %class%" src="%fullImage%"> </div> <div class="player_stats"> <div class="player_character">%characterName%</div> <div class="player_hp">HP:<span class="hp_highlight"> %hp% </span></div> <div class="player_atk">ATK: <span class="atk_highlight">%atk%</span</div></div>';
 
             let newhtml = html.replace('%fullImage%', selection.fullImage);
             newhtml = newhtml.replace('%characterName%', selection.name);
             newhtml = newhtml.replace('%hp%', selection.hp);
             newhtml = newhtml.replace('%atk%', selection.atk);
             newhtml = newhtml.replace('%class%', selection.name)
-            //newhtml = newhtml.replace('%userName%', userName);
 
             display.innerHTML = newhtml;
 
@@ -163,11 +158,43 @@ class UI{
             }
         }
 
+        function playerCheck(){
+            //Math.floor(Math.random() * Math.floor(9));
+
+            if(document.getElementById('count_one_player').checked == true){
+                //console.log('one player');
+                if(playerOneCharacter == ''){
+                    alert('Player 1, choose a fighter.');
+                }
+                playerTwoCharacter = fullRoster[Math.floor(Math.random() * Math.floor(9))];
+                const html = '<div class="game_results_section"> <div class="fullImage_Container"> <img class="player_fullImage %class%" src="%fullImage%"> </div> <div class="player_stats"> <div class="player_character">%characterName%</div> <div class="player_hp">HP:<span class="hp_highlight"> %hp% </span></div> <div class="player_atk">ATK: <span class="atk_highlight">%atk%</span</div></div>';
+
+                let newhtml = html.replace('%fullImage%', playerTwoCharacter.fullImage);
+                newhtml = newhtml.replace('%characterName%', playerTwoCharacter.name);
+                newhtml = newhtml.replace('%hp%', playerTwoCharacter.hp);
+                newhtml = newhtml.replace('%atk%', playerTwoCharacter.atk);
+                newhtml = newhtml.replace('%class%', playerTwoCharacter.name)
+
+                document.getElementById('game_results_two').innerHTML = newhtml;
+                //console.log(playerTwoCharacter);
+            } else if(document.getElementById('count_two_player').checked == true){
+                //console.log('two players');
+                if(playerOneCharacter == ''){
+                    alert('Player 1, select a fighter.');
+                } else if(playerTwoCharacter == ''){
+                    alert('Player 2, select a fighter.');
+                }
+            } else{
+                alert('Would you like a one or two player game?');
+            }
+        }
+
         function combatResolution(){
 
-            if((playerOneCharacter == null) || (playerTwoCharacter == null)){
-                alert('Please select two fighters.');
-            } else{
+            /* if((playerOneCharacter == '') || (playerTwoCharacter == '')){
+                alert('Select two fighters.')
+            } else{ */
+                playerCheck();
 
                 let one = playerOneCharacter;
                 let two = playerTwoCharacter;
@@ -180,17 +207,17 @@ class UI{
                     if( oneRes > twoRes){
                         entry = (`<span class="name_highlight">${one.name}</span> won against <span class="name_highlight">${two.name}</span>! ${one.pronouns[0]} dealt <span class="atk_highlight">${one.atk}</span> to ${one.pronouns[1]} opponent and has <span class="hp_highlight">${oneRes}</span> hp remaining.`);
                     } else if ( oneRes < twoRes){
-                        entry =(`<span class="name_highlight">${two.name}</span> won against <span class="name_highlight">${one.name}</span>! ${two.pronouns[0]} dealt <span class="atk_highlight">${two.atk}</span> to ${two.pronouns[1]} opponent and has <span class="hp_highlight">${twoRes}</span> hp remaining.`);
+                         entry =(`<span class="name_highlight">${two.name}</span> won against <span class="name_highlight">${one.name}</span>! ${two.pronouns[0]} dealt <span class="atk_highlight">${two.atk}</span> to ${two.pronouns[1]} opponent and has <span class="hp_highlight">${twoRes}</span> hp remaining.`);
                     } else {
-                        entry =(`It would seem we have a tie between <span class="name_highlight">${one.name}</span> and <span class="name_highlight">${two.name}</span>`);
-                    }
+                         entry =(`It would seem we have a tie between <span class="name_highlight">${one.name}</span> and <span class="name_highlight">${two.name}</span>`);
+                     }
                 }
 
                 function hpCalc(adv, dis){
                     let advRes = (adv.hp - dis.atk);
                     let disRes = (dis.hp - (adv.atk*2));
 
-                    if (advRes > disRes){
+                     if (advRes > disRes){
                         entry =(`<span class="name_highlight">${adv.name}</span> won against <span class="name_highlight">${dis.name}</span>! ${adv.pronouns[2]} ${adv.weapon} attack was super effective! ${adv.pronouns[0]} dealt <span class="atk_highlight">${(2*adv.atk)}</span> damage to <span class="name_highlight">${dis.name}</span> and has <span class="hp_highlight">${advRes}</span> hp remaining.`);
                     } else if (advRes < disRes){
                         entry =(`<span class="name_highlight">${dis.name}</span> won against <span class="name_highlight">${adv.name}</span>! ${dis.pronouns[0]} was weak to <span class="name_highlight">${adv.name}'s</span> ${adv.weapon} attack. ${dis.pronouns[0]} has <span class="hp_highlight">${disRes}</span> hp remaining after taking <span class="atk_highlight">${(2*adv.atk)}</span> damage from ${dis.pronouns[1]} opponent.`);
@@ -213,30 +240,30 @@ class UI{
                         default:
                             alert('Defaulting. Check logs');
                     }
-                } else if(one.weapon == 'Spear'){
-                    switch(two.weapon){
+                } else if (one.weapon == 'Spear') {
+                    switch (two.weapon) {
                         case 'Spear':
-                            tieRes(one,two);
+                            tieRes(one, two);
                             break;
                         case 'Axe':
-                            hpCalc(one,two);
+                            hpCalc(one, two);
                             break;
                         case 'Sword':
-                            hpCalc(two,one);
+                            hpCalc(two, one);
                             break;
                         default:
                             alert('Defaulting. Check logs');
                     }
-                } else if(one.weapon == 'Axe'){
-                    switch(two.weapon){
+                } else if (one.weapon == 'Axe') {
+                    switch (two.weapon) {
                         case 'Axe':
-                            tieRes(one,two);
+                            tieRes(one, two);
                             break;
                         case 'Sword':
-                            hpCalc(one,two);
+                            hpCalc(one, two);
                             break;
                         case 'Spear':
-                            hpCalc(two,one);
+                            hpCalc(two, one);
                             break;
                         default:
                             alert('Defaulting. Check logs');
@@ -246,23 +273,5 @@ class UI{
                 let html = '<div class="log_entry">%entry%</div>';
                 let newhtml = html.replace('%entry%', entry);
                 document.querySelector('#combat_log').insertAdjacentHTML("afterbegin", newhtml);
-            }             
-        }
-
-
-        
-
-        //Character
-
-        /* function characterSelect(e){
-            console.log('test');
-        } */
-
-
-    // Instanciate players
-
-    // Calculate winner
-
-    // Instanciate ui
-
-    // Event listeners
+            //}
+        }  
