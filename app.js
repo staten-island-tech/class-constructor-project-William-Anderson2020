@@ -42,8 +42,6 @@ class UI{
 
 // Controller
 
-    // Instanciate Characters
-
     const pronounsM = ['He', 'his', 'His'];
     const pronounsF = ['She', 'her', 'Her'];
 
@@ -68,10 +66,7 @@ class UI{
     let playerOneCharacter = '';
     let playerTwoCharacter = '';
 
-    // Take user inputs
-        //Names
-        //1p 2p
-        //Game
+    
         function gameSelect(input){
 
             switch(input.value) {
@@ -275,3 +270,9 @@ class UI{
         function clearLog(){
             document.querySelector('#combat_log').innerHTML='';
         }
+
+class Controller{
+    UI(){
+        console.log('Controller UI');
+    }
+}
