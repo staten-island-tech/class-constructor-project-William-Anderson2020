@@ -292,18 +292,30 @@ img.Edelgard{
 
 .log_entry .name_highlight:hover{
     text-decoration: underline;
-    text-decoration-color: -var(--highlight-name);
+    text-decoration-color: var(--highlight-name);
     transition: .5s;
 }
 
 .log_entry .hp_highlight:hover{
     text-decoration: underline;
-    text-decoration-color: -var(--highlight-hp);
+    text-decoration-color: var(--highlight-hp);
     transition: .5s;
 }
 
 .log_entry .atk_highlight:hover{
     text-decoration: underline;
-    text-decoration-color: -var(--highlight-atk);
+    text-decoration-color: var(--highlight-atk);
+    transition: .5s;
+}
+
+.log_remove{
+    font-family: 'Bitter', serif;
+    font-size: 4rem;
+    color: var(--highlight-atk);
+}
+
+.log_remove:hover{
+    text-decoration: underline;
+    text-decoration-color: var(--highlight-atk);
     transition: .5s;
 }

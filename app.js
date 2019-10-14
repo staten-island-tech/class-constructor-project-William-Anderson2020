@@ -41,9 +41,6 @@ class UI{
 
 
 // Controller
-    // Event Handler
-
-    
 
     // Instanciate Characters
 
@@ -190,88 +187,91 @@ class UI{
         }
 
         function combatResolution(){
+            playerCheck();
 
-            /* if((playerOneCharacter == '') || (playerTwoCharacter == '')){
-                alert('Select two fighters.')
-            } else{ */
-                playerCheck();
+            let one = playerOneCharacter;
+            let two = playerTwoCharacter;
+            let entry = '';
 
-                let one = playerOneCharacter;
-                let two = playerTwoCharacter;
-                let entry = '';
+            function tieRes(one, two) {
+                let oneRes = (one.hp - two.atk);
+                let twoRes = (two.hp - one.atk);
 
-                function tieRes(one, two){
-                    let oneRes = (one.hp - two.atk);
-                    let twoRes = (two.hp - one.atk);
-
-                    if( oneRes > twoRes){
-                        entry = (`<span class="name_highlight">${one.name}</span> won against <span class="name_highlight">${two.name}</span>! ${one.pronouns[0]} dealt <span class="atk_highlight">${one.atk}</span> to ${one.pronouns[1]} opponent and has <span class="hp_highlight">${oneRes}</span> hp remaining.`);
-                    } else if ( oneRes < twoRes){
-                         entry =(`<span class="name_highlight">${two.name}</span> won against <span class="name_highlight">${one.name}</span>! ${two.pronouns[0]} dealt <span class="atk_highlight">${two.atk}</span> to ${two.pronouns[1]} opponent and has <span class="hp_highlight">${twoRes}</span> hp remaining.`);
-                    } else {
-                         entry =(`It would seem we have a tie between <span class="name_highlight">${one.name}</span> and <span class="name_highlight">${two.name}</span>`);
-                     }
+                if (oneRes > twoRes) {
+                    entry = (`<span class="name_highlight">${one.name}</span> won against <span class="name_highlight">${two.name}</span>! ${one.pronouns[0]} dealt <span class="atk_highlight">${one.atk}</span> to ${one.pronouns[1]} opponent and has <span class="hp_highlight">${oneRes}</span> hp remaining.`);
+                } else if (oneRes < twoRes) {
+                    entry = (`<span class="name_highlight">${two.name}</span> won against <span class="name_highlight">${one.name}</span>! ${two.pronouns[0]} dealt <span class="atk_highlight">${two.atk}</span> to ${two.pronouns[1]} opponent and has <span class="hp_highlight">${twoRes}</span> hp remaining.`);
+                } else {
+                    entry = (`It would seem we have a tie between <span class="name_highlight">${one.name}</span> and <span class="name_highlight">${two.name}</span>`);
                 }
+            }
 
-                function hpCalc(adv, dis){
-                    let advRes = (adv.hp - dis.atk);
-                    let disRes = (dis.hp - (adv.atk*2));
+            function hpCalc(adv, dis) {
+                let advRes = (adv.hp - dis.atk);
+                let disRes = (dis.hp - (adv.atk * 2));
 
-                     if (advRes > disRes){
-                        entry =(`<span class="name_highlight">${adv.name}</span> won against <span class="name_highlight">${dis.name}</span>! ${adv.pronouns[2]} ${adv.weapon} attack was super effective! ${adv.pronouns[0]} dealt <span class="atk_highlight">${(2*adv.atk)}</span> damage to <span class="name_highlight">${dis.name}</span> and has <span class="hp_highlight">${advRes}</span> hp remaining.`);
-                    } else if (advRes < disRes){
-                        entry =(`<span class="name_highlight">${dis.name}</span> won against <span class="name_highlight">${adv.name}</span>! ${dis.pronouns[0]} was weak to <span class="name_highlight">${adv.name}'s</span> ${adv.weapon} attack. ${dis.pronouns[0]} has <span class="hp_highlight">${disRes}</span> hp remaining after taking <span class="atk_highlight">${(2*adv.atk)}</span> damage from ${dis.pronouns[1]} opponent.`);
-                    } else{
-                        entry =(`It would seem we have a tie between <span class="name_highlight">${adv.name}</span> and <span class="name_highlight">${dis.name}</span>`);
-                    }
+                if (advRes > disRes) {
+                    entry = (`<span class="name_highlight">${adv.name}</span> won against <span class="name_highlight">${dis.name}</span>! ${adv.pronouns[2]} ${adv.weapon} attack was super effective! ${adv.pronouns[0]} dealt <span class="atk_highlight">${(2 * adv.atk)}</span> damage to <span class="name_highlight">${dis.name}</span> and has <span class="hp_highlight">${advRes}</span> hp remaining.`);
+                } else if (advRes < disRes) {
+                    entry = (`<span class="name_highlight">${dis.name}</span> won against <span class="name_highlight">${adv.name}</span>! ${dis.pronouns[0]} was weak to <span class="name_highlight">${adv.name}'s</span> ${adv.weapon} attack. ${dis.pronouns[0]} has <span class="hp_highlight">${disRes}</span> hp remaining after taking <span class="atk_highlight">${(2 * adv.atk)}</span> damage from ${dis.pronouns[1]} opponent.`);
+                } else {
+                    entry = (`It would seem we have a tie between <span class="name_highlight">${adv.name}</span> and <span class="name_highlight">${dis.name}</span>`);
                 }
+            }
 
-                if(one.weapon == 'Sword'){
-                    switch(two.weapon){
-                        case 'Sword':
-                            tieRes(one,two);
-                            break;
-                        case 'Spear':
-                            hpCalc(one,two);
-                            break;
-                        case 'Axe':
-                            hpCalc(two,one);
-                            break;
-                        default:
-                            alert('Defaulting. Check logs');
-                    }
-                } else if (one.weapon == 'Spear') {
-                    switch (two.weapon) {
-                        case 'Spear':
-                            tieRes(one, two);
-                            break;
-                        case 'Axe':
-                            hpCalc(one, two);
-                            break;
-                        case 'Sword':
-                            hpCalc(two, one);
-                            break;
-                        default:
-                            alert('Defaulting. Check logs');
-                    }
-                } else if (one.weapon == 'Axe') {
-                    switch (two.weapon) {
-                        case 'Axe':
-                            tieRes(one, two);
-                            break;
-                        case 'Sword':
-                            hpCalc(one, two);
-                            break;
-                        case 'Spear':
-                            hpCalc(two, one);
-                            break;
-                        default:
-                            alert('Defaulting. Check logs');
-                    }
+            if (one.weapon == 'Sword') {
+                switch (two.weapon) {
+                    case 'Sword':
+                        tieRes(one, two);
+                        break;
+                    case 'Spear':
+                        hpCalc(one, two);
+                        break;
+                    case 'Axe':
+                        hpCalc(two, one);
+                        break;
+                    default:
+                        alert('Defaulting. Check logs');
                 }
+            } else if (one.weapon == 'Spear') {
+                switch (two.weapon) {
+                    case 'Spear':
+                        tieRes(one, two);
+                        break;
+                    case 'Axe':
+                        hpCalc(one, two);
+                        break;
+                    case 'Sword':
+                        hpCalc(two, one);
+                        break;
+                    default:
+                        alert('Defaulting. Check logs');
+                }
+            } else if (one.weapon == 'Axe') {
+                switch (two.weapon) {
+                    case 'Axe':
+                        tieRes(one, two);
+                        break;
+                    case 'Sword':
+                        hpCalc(one, two);
+                        break;
+                    case 'Spear':
+                        hpCalc(two, one);
+                        break;
+                    default:
+                        alert('Defaulting. Check logs');
+                }
+            }
 
-                let html = '<div class="log_entry">%entry%</div>';
-                let newhtml = html.replace('%entry%', entry);
-                document.querySelector('#combat_log').insertAdjacentHTML("afterbegin", newhtml);
-            //}
+            let html = '<div class="log_entry">%entry%</div>';
+            let newhtml = html.replace('%entry%', (`${entry} <span class="log_remove" onclick="clearEntry(this)">X</span>`));
+            document.querySelector('#combat_log').insertAdjacentHTML("afterbegin", newhtml);
         }  
+
+        function clearEntry(e){
+            e.parentElement.remove();
+        }
+        
+        function clearLog(){
+            document.querySelector('#combat_log').innerHTML='';
+        }
