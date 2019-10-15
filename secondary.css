@@ -1,0 +1,132 @@
+:root{
+    --cp-grey: #39393A;
+    --cp-blue: #297373;
+    --cp-blue-light: #2ea5a5;
+    --cp-white: #E6E6E6;
+}
+
+html{
+    font-size: 62.5%; /*Makes 1 REM = 10 px, good for scaling*/
+    /* background: url('fodlan.jpg_large');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; */
+}
+
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+body{
+    background: url('Fodlan_Transparent.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-attachment: fixed;
+}
+
+.banner{
+    background-color: var(--cp-blue);
+    display: flex;
+    justify-content: center;
+    border-radius: 2rem;
+    width: 80vw;
+}
+
+.banner_title{
+    font-size: 10rem;
+    font-family: 'Aladin', cursive;
+    color: var(--cp-white);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: var(--cp-grey);
+    text-transform: uppercase;
+}
+
+.user_input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#character_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60vh;
+    justify-content: space-around;
+    width: 30rem;
+    background-color: rgba(255,255,255,.6);
+    margin-top: 2rem;
+    border-radius: 2rem;
+}
+
+.character_form_input{
+    font-size: 2rem;
+    font-family: 'Merienda', cursive; 
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text_box{
+    margin-top: .5rem;
+    width: 20rem;
+    font-family: 'Merienda', cursive; 
+}
+
+.btn{
+    border-radius: 3rem;
+    width: 15rem;
+    height: 5rem;
+    background-color: var(--cp-blue);
+    color: var(--cp-white);
+    font-family: 'Aladin', cursive;
+    font-size: 3rem;
+    -webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color: var(--cp-grey);
+}
+
+.btn:hover{
+    transform: scale(1.1);
+    transition: 1s;
+    background-color: var(--cp-blue-light);
+}
+
+.display{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    font-size: 2rem;
+    width: 80vw;
+}
+
+.display_character{
+    display: flex;
+    display: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 80vw;
+    font-size: 2rem;
+    font-family: 'Merienda', cursive; 
+    margin: 1rem auto;
+    background-color: rgba(255,255,255,.6);
+    border-radius: 2rem;
+    /* padding: .5rem; */
+}
+
+.display_image img{
+    width: 10rem;
+    height: auto;
+}
+
+.display_remove{
+    font-size: 1.8rem;
+}
+
+.display_block{
+    width: 13.34vh;
+}
