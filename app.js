@@ -66,6 +66,10 @@ class UI{
     let playerOneCharacter = '';
     let playerTwoCharacter = '';
 
+
+    let roster = import Roster from 'characters.js';
+    let roster = new Roster;
+    console.log(roster.lucina);
     
         function gameSelect(input){
 
