@@ -41,7 +41,6 @@ class UI{
 
 
 // Controller
-
     const pronounsM = ['He', 'his', 'His'];
     const pronounsF = ['She', 'her', 'Her'];
 
@@ -276,4 +275,3 @@ class Controller{
         console.log('Controller UI');
     }
 }
-//test
