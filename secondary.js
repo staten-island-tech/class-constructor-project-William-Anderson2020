@@ -8,7 +8,7 @@ class Model{
     }
 }
 
-class UI{
+const UI = new class UI{
     displayCharacter(e) { //e for event
         let userInput = new Model(document.getElementById('alias').value, document.getElementById('first_name').value, document.getElementById('last_name').value, document.getElementById('weapon').value, document.getElementById('image').value);
 
@@ -42,14 +42,26 @@ class UI{
             newHtml = newHtml.replace('%weapon%', userInput.weapon);
             newHtml = newHtml.replace('%url%', userInput.image);
     
-            display.insertAdjacentHTML('afterbegin', newHtml);
+            document.querySelector('.display').insertAdjacentHTML('afterbegin', newHtml);
     
             e.preventDefault();
             document.querySelector('#character_form').reset();
         }
     }
+    removeCharacter(e){
+        if(e.target.parentElement.classList.contains('display_remove')){
+            e.target.parentElement.parentElement.remove();
+        }
+    }
 }
 
-class Controller{
 
+
+const Controller = new class Controller{
+    init(){
+        document.querySelector('#character_form').addEventListener('submit', UI.displayCharacter);
+        document.querySelector('.display').addEventListener('click', UI.removeCharacter);
+    }
 }
+
+Controller.init();
