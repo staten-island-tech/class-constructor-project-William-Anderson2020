@@ -197,7 +197,7 @@ class UI{
                 } else if (oneRes < twoRes) {
                     entry = (`<span class="name_highlight">${two.name}</span> won against <span class="name_highlight">${one.name}</span>! ${two.pronouns[0]} dealt <span class="atk_highlight">${two.atk}</span> to ${two.pronouns[1]} opponent and has <span class="hp_highlight">${twoRes}</span> hp remaining.`);
                 } else {
-                    entry = (`It would seem we have a tie between <span class="name_highlight">${one.name}</span> and <span class="name_highlight">${two.name}</span>`);
+                    entry = (`It would seem we have a tie between <span class="name_highlight">${one.name}</span> and <span class="name_highlight">${two.name}</span>.`);
                 }
             }
 
@@ -210,7 +210,7 @@ class UI{
                 } else if (advRes < disRes) {
                     entry = (`<span class="name_highlight">${dis.name}</span> won against <span class="name_highlight">${adv.name}</span>! ${dis.pronouns[0]} was weak to <span class="name_highlight">${adv.name}'s</span> ${adv.weapon} attack. ${dis.pronouns[0]} has <span class="hp_highlight">${disRes}</span> hp remaining after taking <span class="atk_highlight">${(2 * adv.atk)}</span> damage from ${dis.pronouns[1]} opponent.`);
                 } else {
-                    entry = (`It would seem we have a tie between <span class="name_highlight">${adv.name}</span> and <span class="name_highlight">${dis.name}</span>`);
+                    entry = (`It would seem we have a tie between <span class="name_highlight">${adv.name}</span> and <span class="name_highlight">${dis.name}</span>.`);
                 }
             }
 
