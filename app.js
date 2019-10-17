@@ -1,15 +1,3 @@
-//Start ref. framework
-
-// Model
-    //Game Class
-    class Game{
-        constructor(name, characterArray){
-            this.name = name;
-            this.characterArray = characterArray;
-        }
-    }
-
-    //Character Class
     class Character{
         constructor(name, weapon, game, hp, atk, portrait, fullImage, pronouns){
             this.name = name;
@@ -22,25 +10,6 @@
             this.pronouns = pronouns;
         }
     }
-
-// View
-
-
-/* function displayCharacterChoices(e){
-    let playerInput = document.querySelector('.player');
-    
-} */
-
-class UI{
-    constructor(playerOneCharacter, playerTwoCharacter){
-        this.playerOneCharacter = playerOneCharacter;
-        this.playerTwoCharacter = playerTwoCharacter;
-    }
-}
-
-
-
-// Controller
 
     const pronounsM = ['He', 'his', 'His'];
     const pronounsF = ['She', 'her', 'Her'];
@@ -270,9 +239,3 @@ class UI{
         function clearLog(){
             document.querySelector('#combat_log').innerHTML='';
         }
-
-class Controller{
-    UI(){
-        console.log('Controller UI');
-    }
-}
